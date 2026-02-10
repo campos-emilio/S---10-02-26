@@ -51,20 +51,20 @@
 
 .gallery {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
-            gap: 15px;
-            margin: 20px auto;
-            max-width: 100%; /* Para que no se salga de la tarjeta */
-            justify-items: center; /* Centra las imágenes horizontalmente */
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center; /* Centra las fotos verticalmente entre ellas */
         }
 
-        .gallery img {
+.gallery img {
             width: 100%;
-            height: 180px; /* Altura fija para que todas se vean iguales */
-            object-fit: cover; /* Esto hace que la imagen llene el cuadro sin deformarse */
+            height: auto; /* El alto se ajusta solo */
+            aspect-ratio: 1 / 1; /* Mantiene un cuadro perfecto */
+            object-fit: contain; /* Ajusta la imagen completa dentro del cuadro sin cortarla */
+            background-color: #f8f9fa; /* Relleno gris clarito para los bordes si la foto es flaca */
             border-radius: 15px;
-            border: 3px solid #bbdefb;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid #bbdefb;
         }
 
         .btn-no { background: #b0bec5; position: relative; z-index: 999; }
@@ -200,6 +200,7 @@
     </script>
 </body>
 </html>
+
 
 
 
