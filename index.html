@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffebee;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        h1 {
+            color: #d32f2f;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #btn-si {
+            background-color: #ff4081;
+            color: white;
+        }
+
+        #btn-no {
+            background-color: #9e9e9e;
+            color: white;
+            position: relative;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 20px;
+            animation: float 3s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="content">
+            <h1>¿Quieres ser mi Valentine? ❤️</h1>
+            <div class="buttons">
+                <button id="btn-si" onclick="aceptar()">¡SÍ! 😍</button>
+                <button id="btn-no" onmouseover="moverBoton(this)">No 😢</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function moverBoton(elm) {
+            elm.style.position = 'absolute';
+            elm.style.top = Math.random() * (window.innerHeight - elm.offsetHeight) + 'px';
+            elm.style.left = Math.random() * (window.innerWidth - elm.offsetWidth) + 'px';
+        }
+
+        function aceptar() {
+            document.getElementById('content').innerHTML = `
+                <h1>¡A huevo! Sabía que dirías que sí ❤️</h1>
+                <p style="font-size: 1.5rem;">Te amo muchísimo. Prepárate para el mejor 14 de febrero.</p>
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIycXp5NjZueGZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZ力をZ&ep=v1_gifs_search&rid=giphy.gif&ct=g" width="200">
+            `;
+            lanzarCorazones();
+        }
+
+        function lanzarCorazones() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(heart);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
